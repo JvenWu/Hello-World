@@ -1,0 +1,44 @@
+package cc.emw.mobile.util;
+
+import android.content.Context;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import cc.emw.mobile.R;
+
+public class ToastUtil {
+	
+	public static void showToast(Context context, int strid) {
+		showToast(context, strid, 0);
+	}
+	
+	public static void showToast(Context context, int strid, int iconid) {
+		showToast(context, context.getResources().getString(strid), iconid);
+	}
+	
+	
+	public static void showToast(Context context, String tips) {
+		showToast(context, tips, 0);
+	}
+	
+	public static void showToast(Context context, String tips, int iconid) {
+		View view = LayoutInflater.from(context).inflate(R.layout.toast_tips, null);
+		ImageView image = (ImageView) view.findViewById(R.id.iv_toast_icon);
+		if (iconid > 0) {
+			image.setImageResource(iconid);
+			image.setVisibility(View.VISIBLE);
+		} else {
+			image.setVisibility(View.GONE);
+		}
+		TextView title = (TextView) view.findViewById(R.id.tv_toast_tips);
+		title.setText(tips);
+		Toast toast = new Toast(context);
+		toast.setGravity(Gravity.CENTER, 0, 0);
+		toast.setDuration(Toast.LENGTH_SHORT);
+		toast.setView(view);
+		toast.show();
+	}
+}
