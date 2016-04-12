@@ -1,4 +1,4 @@
-package cc.emw.mobile.util;
+
 
 import java.text.DateFormat;
 import java.text.ParsePosition;
